@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 
 function Calculator(){
-    const [val, setVal] = useState("");
+    const [val, setVal] = useState('');
 
     function backspace(){
         try {
             setVal(val.slice(0, -1));
+        } catch (error) {
+            setVal('')
+        }
+    }
+
+    function calculate(){
+        try {
+            setVal(eval(val));
         } catch (error) {
             
         }
@@ -79,7 +87,7 @@ function Calculator(){
                                         <button className="btn btn-light text-primary shadow p4 fs-4" value="0" onClick={(e)=> setVal(val + e.target.value)}>0</button>
                                     </div>
                                     <div className="col-3">
-                                        <button className="btn btn-light text-primary shadow p4 fs-4" value="=" onClick={(e)=> setVal(val + e.target.value)}>=</button>
+                                        <button className="btn btn-light text-primary shadow p4 fs-4" value="=" onClick={()=> calculate()}>=</button>
                                     </div>
                                     <div className="col-3">
                                         <button className="btn btn-light text-primary shadow p-4 fs-4" value="/" onClick={(e)=> setVal(val + e.target.value)}>/</button>

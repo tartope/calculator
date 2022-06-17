@@ -3,6 +3,14 @@ import React, { useState } from 'react';
 function Calculator(){
     const [val, setVal] = useState("");
 
+    function backspace(){
+        try {
+            setVal(val.slice(0, -1));
+        } catch (error) {
+            
+        }
+    }
+
     return(
         <div>
             <div className="container">
@@ -29,7 +37,7 @@ function Calculator(){
                                         <button className="btn btn-light text-primary shadow p4 fs-4" value="3" onClick={(e)=> setVal(val + e.target.value)}>3</button>
                                     </div>
                                     <div className="col-3">
-                                        <button className="btn btn-light text-primary shadow px-2 py-4 fs-4" value="C" onClick={(e)=> setVal(val + e.target.value)}>C/CE</button>
+                                        <button className="btn btn-light text-primary shadow px-2 py-4 fs-4" value="C" onClick={()=> backspace()}>C/CE</button>
                                     </div>
                                 </div>
 
